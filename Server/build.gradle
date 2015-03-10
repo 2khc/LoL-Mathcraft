@@ -23,9 +23,10 @@ repositories {
 
 dependencies {
     compile("org.springframework.boot:spring-boot-starter-web")
+    compile group: 'com.google.guava', name: 'guava', version: '18.0'
     testCompile("junit:junit")
 }
 
 task wrapper(type: Wrapper) {
-    gradleVersion = '1.11'
+    gradleVersion = '2.2.1'
 }
