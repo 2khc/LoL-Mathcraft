@@ -75,6 +75,9 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/angular/angular.js"></script>
+    <script src="/bower_components/ngAnnotate/mvAnnotator.js"></script>
+    <script src="/bower_components/angular-ui-router/release/angular-ui-router.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -94,7 +97,10 @@
         <!-- endbuild -->
 
         <!-- build:js scripts/main.js -->
+        <!-- inject:js -->
         <script src="scripts/main.js"></script>
+        <script src="scripts/riotApi/services/riotService.js"></script>
+        <!-- endinject -->
         <!-- endbuild -->
 </body>
 </html>

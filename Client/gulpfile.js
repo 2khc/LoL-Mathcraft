@@ -125,3 +125,23 @@ gulp.task('build', ['jshint', 'html', 'images', 'fonts', 'extras'], function () 
 gulp.task('default', ['clean'], function () {
   gulp.start('build');
 });
+
+gulp.task('angular', function () {
+    var target = gulp.src('app/index.html')
+
+    var sources = gulp.src('app/scripts/**/*.js', {
+        read: true
+    });
+
+    return target.pipe($.inject(sources, {
+            //ignorePath: '/build/',
+            addRootSlash: false,
+            relative: true
+        }))
+        .pipe(gulp.dest('app'));
+});
+
+//gulp watch
+gulp.task('watch', function () {
+    gulp.watch('app/scripts/**/*.js', ['angular']);
+});
