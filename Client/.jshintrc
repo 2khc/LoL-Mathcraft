@@ -1,5 +1,4 @@
 {
-  "browser": true,
   "node": true,
   "esnext": true,
   "bitwise": true,
@@ -12,8 +11,25 @@
   "newcap": true,
   "noarg": true,
   "quotmark": "single",
+  "regexp": true,
   "undef": true,
   "unused": true,
   "strict": true,
-  "jquery": true
+  "trailing": true,
+  "smarttabs": true,
+  "white": true,
+  "validthis": true,
+  "globals": {
+    "angular": false,
+    // Angular Mocks
+    "inject": false,
+    // JASMINE
+    "describe": false,
+    "it": false,
+    "before": false,
+    "beforeEach": false,
+    "after": false,
+    "afterEach": false,
+    "expect": false
+  }
 }
