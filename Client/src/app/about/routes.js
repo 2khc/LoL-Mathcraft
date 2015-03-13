@@ -4,6 +4,6 @@ angular.module('mathCraft').config(function ($stateProvider, $urlRouterProvider)
     $stateProvider.state('about', {
         name: 'about',
         url: '/about',
-        templateUrl: 'app/about/templates/about.html'
+        templateUrl: 'app/about/about.html'
     });
 });
