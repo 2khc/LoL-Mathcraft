@@ -1,17 +1,25 @@
 /*global angular */
-angular.module('mathCraft').controller('toolController', function ($scope, championService) {
+angular.module('mathCraft').controller('toolController', function ($scope, championService, itemService, calculateService) {
     'use strict';
 
-    $scope.getChampion = function () {
-        championService.getChampion();
-    };
+    $scope.champions = [];
 
-    $scope.calculate = function () {
-        championService.getChampion(266, 'all');
-    }
-
-    championService.getAllChampions('all').then(function (data) {
+    championService.getAllChampionInfo().then(function (data) {
         $scope.allChampions = data;
+        console.log(data);
     });
 
+    $scope.calculate = function () {
+        calculateService.calculate(championService.getChampion(266, 'stats'), [itemService.getItem(3281, 'stats')]).then(function (data) {
+            $scope.allChampions = data;
+        });
+    };
+
+    $scope.addBlankChampion = function () {
+        $scope.champions.push({});
+    };
+
+    $scope.deleteChampion = function (index) {
+        $scope.champions.splice(index, 1);
+    };
 });
