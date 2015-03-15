@@ -28,13 +28,14 @@ angular.module('mathCraft').service('championService', function ($q, championRes
         var deferred = $q.defer();
         if (self.allChampionsInfo !== undefined) {
             deferred.resolve(self.allChampionsInfo);
+        } else {
+            allChampionsResource.get({
+                champData: 'info'
+            }, function (data) {
+                deferred.resolve(data.data);
+                self.allChampionsInfo = data.data;
+            });
         }
-        allChampionsResource.get({
-            champData: 'info'
-        }, function (data) {
-            deferred.resolve(data.data);
-            self.allChampionsInfo = data.data;
-        });
         return deferred.promise;
     };
 
