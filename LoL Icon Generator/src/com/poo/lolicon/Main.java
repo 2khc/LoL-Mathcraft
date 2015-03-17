@@ -1,42 +1,23 @@
 package com.poo.lolicon;
 
-import java.io.FileReader;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.nio.file.Path;
 import java.nio.file.Paths;
-import java.util.Iterator;
+import java.util.List;
 
-import org.json.simple.JSONArray;
-import org.json.simple.JSONObject;
-import org.json.simple.parser.JSONParser;
+import org.json.simple.parser.ParseException;
 
 public class Main {
 
-	public static void main(String[] args) {
-		JSONParser parser = new JSONParser();
-		 
-        try {
-        	Path currentRelativePath = Paths.get("");
-        	String s = currentRelativePath.toAbsolutePath().toString();
-            Object obj = parser.parse(new FileReader(s + "/json.txt"));
- 
-            JSONObject jsonObject = (JSONObject) obj;
- 
-            String name = (String) jsonObject.get("name");
-            String author = (String) jsonObject.get("Author");
-            JSONArray companyList = (JSONArray) jsonObject.get("data");
- 
-            System.out.println("Name: " + name);
-            System.out.println("Author: " + author);
-            System.out.println("\nCompany List:" + companyList);
-            Iterator<JSONObject> iterator = companyList.iterator();
-            while (iterator.hasNext()) {
-                //System.out.println(iterator.next());
-            	//System.out.println(iterator.next().getName());
-            	System.out.println((String) iterator.next().get("name"));
-            }
- 
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
+    	Path currentRelativePath = Paths.get("");
+    	String s = currentRelativePath.toAbsolutePath().toString();
+		IJSONReader reader = new JSONReader(s + "/json.txt");
+		List<Object[]> objects = reader.readJSONArray("data", "name", "id");
+		
+		for (int i = 0; i < objects.size(); i++) {
+			System.out.println(objects.get(i)[1]);
+		}
 	}
 }
