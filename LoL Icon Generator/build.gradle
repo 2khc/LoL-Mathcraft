@@ -13,6 +13,7 @@ repositories {
 
 dependencies {
     //compile group: 'org.json', name: 'json', version: '20141113'
+    compile('commons-io:commons-io:2.4');
     compile("com.googlecode.json-simple:json-simple:1.1.1")
     testCompile("junit:junit")
 }
