@@ -1,5 +1,6 @@
 package com.poo.lolicon;
 
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.nio.file.Path;
@@ -19,5 +20,12 @@ public class Main {
 		for (int i = 0; i < objects.size(); i++) {
 			System.out.println(objects.get(i)[1]);
 		}
+		
+		FileFinder fileFinder = new FileFinder(s + "/images");
+		File[] files = fileFinder.search("Quicksilver");
+		System.out.println(files[0].getName());
+		
+		FileRenamer fileRenamer = new FileRenamer("dist");
+		fileRenamer.rename(files[0], "blah");
 	}
 }
