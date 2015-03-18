@@ -12,25 +12,24 @@ import org.apache.commons.io.FilenameUtils;
 
 public class FileRenamer {
 
-	private String destination;
+	private Path destination;
 
-	public FileRenamer(String destination) {
+	public FileRenamer(Path destination) {
 		this.destination = destination;
+		this.clearDestination(destination.toString());
 	}
 
 	public void rename(File file, String newFileName) {
-		String fileFolder = file.getParentFile().getParent() + "\\" + this.destination;
+		String fileFolder = this.destination.toString();
 		
 		String newFileNameWithoutExtention = FilenameUtils.removeExtension(newFileName);
 		String newFileNameExtention = FilenameUtils.getExtension(file.getName());
 		
 		String newFileFullPath = fileFolder + "\\" + newFileNameWithoutExtention + "." + newFileNameExtention;
 
-
-		this.clearDestination(fileFolder);
 		
 		Path newPath = Paths.get(newFileFullPath);
-		System.out.println(file.toPath());
+		System.out.println("Renaming: " + file.toPath());
 		try {
 			Files.copy(file.toPath(), newPath,  StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {

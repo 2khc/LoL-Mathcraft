@@ -16,16 +16,24 @@ public class Main {
     	String s = currentRelativePath.toAbsolutePath().toString();
 		IJSONReader reader = new JSONReader(s + "/json.txt");
 		List<Object[]> objects = reader.readJSONArray("data", "name", "id");
-		
+		FileFinder fileFinder = new FileFinder(s + "/images");
+		FileRenamer fileRenamer = new FileRenamer(Paths.get("dist"));
+
 		for (int i = 0; i < objects.size(); i++) {
 			System.out.println(objects.get(i)[1]);
+			findAndRename(fileFinder, fileRenamer, objects.get(i));
 		}
-		
-		FileFinder fileFinder = new FileFinder(s + "/images");
-		File[] files = fileFinder.search("Quicksilver");
-		System.out.println(files[0].getName());
-		
-		FileRenamer fileRenamer = new FileRenamer("dist");
-		fileRenamer.rename(files[0], "blah");
+	}
+	
+	private static String formatItemName(String itemName) {
+		return itemName.replace(' ', '_');
+	}
+	
+	private static void findAndRename(FileFinder fileFinder, FileRenamer fileRenamer, Object[] objects) {
+		File[] files = fileFinder.search(formatItemName((String)objects[0]));
+		for (int i = 0; i < files.length; i++) {
+			fileRenamer.rename(files[i], Long.toString((long)objects[1]));
+		}
+
 	}
 }
