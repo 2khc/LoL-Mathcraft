@@ -1,8 +1,21 @@
 <div ng-controller="itemShopController">
     {{ $parent.test }}
-    <!--<div ng-repeat="item in allItems">
-        <div>
-            <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="input-group">
+                <input type="text" class="form-control" placeholder="Search for item">
+                <span class="input-group-btn">
+            <button class="btn btn-default" type="button">Go!</button>
+          </span>
+            </div>
         </div>
-    </div>-->
+    </div>
+
+    <div class="row">
+        <div ng-repeat="item in allItems">
+            <div class="col-xs-3">
+                <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
+            </div>
+        </div>
+    </div>
 </div>
