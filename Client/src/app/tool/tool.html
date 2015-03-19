@@ -18,10 +18,10 @@
                         <span ng-bind-html="country.name | highlight: $select.search"></span>
                     </ui-select-choices>
                 </ui-select>
-
+                
                 Items:
                 <ui-select ng-model="country.selected" theme="selectize" ng-disabled="disabled" style="width: 300px;">
-                    <ui-select-match placeholder="Select a item">{{$select.selected.name}}</ui-select-match>
+                    <ui-select-match placeholder="Select a item"><img ng-src="assets/images/items/{{$select.selected.id}}.png"> {{$select.selected.name}}</ui-select-match>
                     <ui-select-choices repeat="country in allItems | filter: $select.search">
                         <span ng-bind-html="country.name | highlight: $select.search"></span>
                     </ui-select-choices>
@@ -61,16 +61,23 @@
                         <span ng-bind-html="country.name | highlight: $select.search"></span>
                     </ui-select-choices>
                 </ui-select>
-                
-                Hp:<br>
-                Attack Damage:<br>
-                Ability Power:<br>
-                Movement Speed:<br>
+
+                Hp:
+                <br> Attack Damage:
+                <br> Ability Power:
+                <br> Movement Speed:
+                <br>
             </div>
             <button class="btn btn-primary" ng-click="deleteChampion($index)">Delete</button>
         </div>
     </div>
-    {{ allChampions }}
+
+    <ui-select ng-model="country.selected" theme="selectize" ng-disabled="disabled" style="width: 300px;">
+        <ui-select-match placeholder="Select created champion">{{$select.selected.name}}</ui-select-match>
+        <ui-select-choices repeat="country in champions | filter: $select.search">
+            <span ng-bind-html="country.name | highlight: $select.search"></span>
+        </ui-select-choices>
+    </ui-select>
     <hr>
 
     <div ng-include="'components/footer/footer.html'"></div>

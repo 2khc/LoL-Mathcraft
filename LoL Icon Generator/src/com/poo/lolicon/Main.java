@@ -20,7 +20,7 @@ public class Main {
 		FileRenamer fileRenamer = new FileRenamer(Paths.get("dist"));
 
 		for (int i = 0; i < objects.size(); i++) {
-			System.out.println(objects.get(i)[1]);
+			System.out.println(objects.get(i)[1] + ": " + objects.get(i)[0]);
 			findAndRename(fileFinder, fileRenamer, objects.get(i));
 		}
 	}
