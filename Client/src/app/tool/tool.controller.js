@@ -3,11 +3,12 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
     'use strict';
 
     $scope.champions = [];
+    $scope.test = "hi";
 
     championService.getAllChampionInfo().then(function (data) {
         $scope.allChampions = jsonUtilService.convertToArray(data);
     });
-    
+
     itemService.getAllItemInfo().then(function (data) {
         $scope.allItems = jsonUtilService.convertToArray(data);
         console.log(data);
@@ -20,14 +21,19 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
     };
 
     $scope.addBlankChampion = function () {
-        $scope.champions.push({});
+        $scope.champions.push({
+            items: []
+        });
     };
 
     $scope.deleteChampion = function (index) {
         $scope.champions.splice(index, 1);
     };
-    
-    $scope.openItemSelection = function () {
-        ngDialog.open({ template: 'components/itemShop/templates/shop.html' });
+
+    $scope.openItemSelection = function (championIndex) {
+        ngDialog.open({
+            template: 'components/itemShop/templates/shop.html',
+            data: $scope.champions[championIndex]
+        });
     };
 });
