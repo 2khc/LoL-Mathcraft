@@ -1,5 +1,5 @@
 /*global angular */
-angular.module('mathCraft').controller('toolController', function ($scope, championService, itemService, calculateService, jsonUtilService) {
+angular.module('mathCraft').controller('toolController', function ($scope, championService, itemService, calculateService, jsonUtilService, ngDialog) {
     'use strict';
 
     $scope.champions = [];
@@ -25,5 +25,9 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
 
     $scope.deleteChampion = function (index) {
         $scope.champions.splice(index, 1);
+    };
+    
+    $scope.openItemSelection = function () {
+        ngDialog.open({ template: 'components/itemShop/templates/shop.html' });
     };
 });
