@@ -11,6 +11,15 @@
         </div>
     </div>
 
+    <div class="row">
+        <div ng-repeat="item in ngDialogData">
+            <div class="col-xs-3" ng-click="addItem($index)">
+                <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
+            </div>
+        </div>
+    </div>
+
+
     <div class="row" ng-show="true">
         <div ng-repeat="item in allItems">
             <div class="col-xs-3" ng-click="addItem($index)">
