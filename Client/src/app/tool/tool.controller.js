@@ -33,7 +33,7 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
     $scope.openItemSelection = function (championIndex) {
         ngDialog.open({
             template: 'components/itemShop/templates/shop.html',
-            data: $scope.champions[championIndex]
+            data: $scope.champions[championIndex].items
         });
     };
 });

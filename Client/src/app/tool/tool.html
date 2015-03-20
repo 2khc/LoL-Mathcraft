@@ -63,6 +63,9 @@
                 </ui-select>
                 
                 Select item:
+                <div ng-repeat="item in champion.items">
+                    <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
+                </div>
                 <button class="btn btn-primary" ng-click="openItemSelection($index)">Select</button>
 
                 Hp:
