@@ -24,9 +24,11 @@ public class Main {
 		}, "name", "id");*/
 		
 		extraction(s + "/champjson.txt", "data", newObjects -> {
-			System.out.println(newObjects[1] + ": " + newObjects[0]);
+			//System.out.println(newObjects[1] + ": " + newObjects[0]);
 			findAndRename(fileFinder, fileRenamer, newObjects, (name) -> {
-				return ItemFormatter.splitCamelCase(name);
+				String splited = ItemFormatter.splitCamelCase(name);
+				return splited.split("\\s+")[0];
+				//return splited;
 			});
 		}, "name", "id");
 	}
@@ -42,8 +44,11 @@ public class Main {
 
 	private static void findAndRename(FileFinder fileFinder, FileRenamer fileRenamer, Object[] objects, FormatterFunction function) {
 		String formattedStr = function.format((String) objects[0]);
-		System.out.println(formattedStr);
+		//System.out.println(formattedStr);
 		File[] files = fileFinder.search(formattedStr);
+		if (files.length == 0) {
+			System.out.println(formattedStr + " could not be found in JSON.");
+		}
 		for (int i = 0; i < files.length; i++) {
 			fileRenamer.rename(files[i], Long.toString((long) objects[1]));
 		}

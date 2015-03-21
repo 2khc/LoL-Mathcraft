@@ -27,7 +27,7 @@ public class FileRenamer {
 
 		
 		Path newPath = Paths.get(newFileFullPath);
-		System.out.println("Renaming: " + file.toPath());
+		//System.out.println("Renaming: " + file.toPath());
 		try {
 			Files.copy(file.toPath(), newPath,  StandardCopyOption.REPLACE_EXISTING);
 		} catch (IOException e) {
