@@ -22,7 +22,8 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
 
     $scope.addBlankChampion = function () {
         $scope.champions.push({
-            items: []
+            items: [],
+            champion: 'hi'
         });
     };
 
@@ -34,6 +35,13 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
         ngDialog.open({
             template: 'components/itemShop/templates/shop.html',
             data: $scope.champions[championIndex].items
+        });
+    };
+    
+    $scope.openChampSelection = function (championIndex) {
+        ngDialog.open({
+            template: 'components/champSelector/templates/champSelector.html',
+            data: $scope.champions[championIndex].champion
         });
     };
 });

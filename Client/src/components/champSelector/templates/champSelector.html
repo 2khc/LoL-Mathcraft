@@ -1,0 +1,9 @@
+<div ng-controller="champSelectorController">
+    Current Champ: <img ng-src="assets/images/champions/{{ngDialogData.id}}.png">
+    <br>
+    <div ng-repeat="champion in allChampions">
+        <div class="col-xs-3" ng-click="changeChampion($index)">
+            <img ng-src="assets/images/champions/{{champion.id}}.png">
+        </div>
+    </div>
+</div>

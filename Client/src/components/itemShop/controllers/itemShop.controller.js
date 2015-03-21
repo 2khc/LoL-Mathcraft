@@ -1,5 +1,5 @@
 /*global angular */
-angular.module('mathCraft').controller('itemShopController', function ($scope, itemService, calculateService, jsonUtilService) {
+angular.module('mathCraft').controller('itemShopController', function ($scope, itemService, jsonUtilService) {
     'use strict';
 
     console.log($scope.ngDialogData);
