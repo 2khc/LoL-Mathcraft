@@ -15,7 +15,7 @@ public class Main {
 		Path currentRelativePath = Paths.get("");
 		String s = currentRelativePath.toAbsolutePath().toString();
 
-		FileFinder fileFinder = new FileFinder(s + "/images");
+		FileFinder fileFinder = new FileFinder(s + "/champimages");
 		FileRenamer fileRenamer = new FileRenamer(Paths.get("dist").toString());
 
 		/*extraction(Paths.get("images").toString(), s + "/json.txt", Paths.get("dist").toString(), "data", newObjects -> {
@@ -23,13 +23,15 @@ public class Main {
 			findAndRename(fileFinder, fileRenamer, newObjects);
 		}, "name", "id");*/
 		
-		extraction(Paths.get("champimages").toString(), s + "/champjson.txt", Paths.get("champdist").toString(), "data", newObjects -> {
+		extraction(s + "/champjson.txt", "data", newObjects -> {
 			System.out.println(newObjects[1] + ": " + newObjects[0]);
-			findAndRename(fileFinder, fileRenamer, newObjects);
+			findAndRename(fileFinder, fileRenamer, newObjects, (name) -> {
+				return ItemFormatter.splitCamelCase(name);
+			});
 		}, "name", "id");
 	}
 
-	private static void extraction(String pathToImages, String pathToJson, String pathToDist, String jsonRoot, ObjectExtractCallback callback, String... fields) throws FileNotFoundException, IOException, ParseException {
+	private static void extraction(String pathToJson, String jsonRoot, ObjectExtractCallback callback, String... fields) throws FileNotFoundException, IOException, ParseException {
 		IJSONReader reader = new JSONReader(pathToJson);
 		List<Object[]> objects = reader.readJSONArray(jsonRoot, fields);
 
@@ -38,8 +40,10 @@ public class Main {
 		}
 	}
 
-	private static void findAndRename(FileFinder fileFinder, FileRenamer fileRenamer, Object[] objects) {
-		File[] files = fileFinder.search(ItemFormatter.replaceUnderscoreWithSpace((String) objects[0]));
+	private static void findAndRename(FileFinder fileFinder, FileRenamer fileRenamer, Object[] objects, FormatterFunction function) {
+		String formattedStr = function.format((String) objects[0]);
+		System.out.println(formattedStr);
+		File[] files = fileFinder.search(formattedStr);
 		for (int i = 0; i < files.length; i++) {
 			fileRenamer.rename(files[i], Long.toString((long) objects[1]));
 		}

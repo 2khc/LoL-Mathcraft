@@ -1,5 +1,5 @@
 package com.poo.lolicon;
 
 public interface FormatterFunction {
-	void format(String str);
+	String format(String str);
 }
