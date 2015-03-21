@@ -12,20 +12,18 @@ import org.apache.commons.io.FilenameUtils;
 
 public class FileRenamer {
 
-	private Path destination;
+	private String destination;
 
-	public FileRenamer(Path destination) {
+	public FileRenamer(String destination) {
 		this.destination = destination;
 		this.clearDestination(destination.toString());
 	}
 
 	public void rename(File file, String newFileName) {
-		String fileFolder = this.destination.toString();
-		
 		String newFileNameWithoutExtention = FilenameUtils.removeExtension(newFileName);
 		String newFileNameExtention = FilenameUtils.getExtension(file.getName());
 		
-		String newFileFullPath = fileFolder + "\\" + newFileNameWithoutExtention + "." + newFileNameExtention;
+		String newFileFullPath = this.destination + "\\" + newFileNameWithoutExtention + "." + newFileNameExtention;
 
 		
 		Path newPath = Paths.get(newFileFullPath);
