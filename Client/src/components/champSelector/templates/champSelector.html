@@ -1,8 +1,20 @@
 <div ng-controller="champSelectorController">
+    <form role="form">
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Search..." ng-model="searchQuery" ng-change="search()" />
+            <i class="form-control-feedback glyphicon glyphicon-search"></i>
+        </div>
+    </form>
     Current Champ: <img ng-src="assets/images/champions/{{ngDialogData.id}}.png">
     <br>
-    <div ng-repeat="champion in allChampions">
-        <div class="col-xs-3" ng-click="changeChampion($index)">
+    <div ng-show="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in allChampions">
+        <div class="col-xs-3" ng-click="changeChampion(champion)">
+            <img ng-src="assets/images/champions/{{champion.id}}.png">
+        </div>
+    </div>
+
+    <div ng-hide="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in searchResults">
+        <div class="col-xs-3" ng-click="changeChampion(champion)">
             <img ng-src="assets/images/champions/{{champion.id}}.png">
         </div>
     </div>
