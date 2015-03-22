@@ -68,8 +68,13 @@
                 </div>
                 <button class="btn btn-primary" ng-click="openItemSelection($index)">Select items</button>
                 <button class="btn btn-primary" ng-click="openChampSelection($index)">Select Champ</button>
-                
-                <img ng-src="assets/images/champions/{{champion.champion.id}}.png">{{champion.champion.name}}
+
+                <div ng-click="openChampSelection($index)">
+                    <div ng-show="champion.champion == undefined">
+                        <img ng-src="assets/images/champions/blank.png">
+                    </div>
+                    <img ng-src="assets/images/champions/{{champion.champion.id}}.png">{{champion.champion.name}}
+                </div>
 
                 Hp:
                 <br> Attack Damage:

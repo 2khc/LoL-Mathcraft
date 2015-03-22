@@ -22,8 +22,7 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
 
     $scope.addBlankChampion = function () {
         $scope.champions.push({
-            items: [],
-            champion: 'hi'
+            items: []
         });
     };
 
