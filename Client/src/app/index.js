@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('mathCraft', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'ui.select', 'ngDialog'])
+angular.module('mathCraft', ['ngAnimate', 'ngCookies', 'ngTouch', 'ngSanitize', 'ngResource', 'ui.router', 'ui.bootstrap', 'ui.select', 'ngDialog', 'ngLodash'])
   .config(function ($stateProvider, $urlRouterProvider) {
     $stateProvider
       .state('home', {
