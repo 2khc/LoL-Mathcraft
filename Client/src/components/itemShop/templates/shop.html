@@ -1,15 +1,11 @@
 <div ng-controller="itemShopController">
     {{ $parent.test }}
-    <div class="row">
-        <div class="col-xs-12">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for item">
-                <span class="input-group-btn">
-                    <button class="btn btn-default" type="button">Go!</button>
-                </span>
-            </div>
+    <form role="form">
+        <div class="form-group has-feedback">
+            <input type="text" class="form-control" placeholder="Search..." ng-model="searchQuery" ng-change="search()" />
+            <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
-    </div>
+    </form>
 
     <div class="row">
         <div ng-repeat="item in ngDialogData">
@@ -19,12 +15,20 @@
         </div>
     </div>
 
-
-    <div class="row" ng-show="true">
-        <div ng-repeat="item in allItems">
+    <div class="row">
+        <div ng-show="searchQuery === '' || searchQuery === undefined" ng-repeat="item in allItems">
             <div class="col-xs-3" ng-click="addItem($index)">
                 <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
             </div>
         </div>
     </div>
+
+    <div class="row">
+        <div ng-hide="searchQuery === '' || searchQuery === undefined" ng-repeat="item in searchResults">
+            <div class="col-xs-3" ng-click="addItem($index)">
+                <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
+            </div>
+        </div>
+    </div>
+
 </div>

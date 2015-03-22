@@ -10,5 +10,15 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
 
     $scope.addItem = function (index) {
         $scope.ngDialogData.push($scope.allItems[index]);
-    }
+    };
+
+    $scope.search = function () {
+        var searchIndex;
+        $scope.searchResults = [];
+        for (searchIndex = 0; searchIndex < $scope.allItems.length; searchIndex += 1) {
+            if (angular.lowercase($scope.allItems[searchIndex].name).indexOf(angular.lowercase($scope.searchQuery)) > -1) {
+                $scope.searchResults.push($scope.allItems[searchIndex]);
+            }
+        }
+    };
 });

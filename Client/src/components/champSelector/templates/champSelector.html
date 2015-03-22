@@ -5,7 +5,6 @@
             <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
     </form>
-    Current Champ: <img ng-src="assets/images/champions/{{ngDialogData.id}}.png">
     <br>
     <div ng-show="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in allChampions">
         <div class="col-xs-3" ng-click="changeChampion(champion)" ng-class="{selected: ngDialogData.champion==champion}">

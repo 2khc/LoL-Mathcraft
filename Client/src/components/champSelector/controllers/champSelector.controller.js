@@ -10,7 +10,7 @@ angular.module('mathCraft').controller('champSelectorController', function ($sco
     });
 
     $scope.changeChampion = function (champion) {
-        $scope.ngDialogData.champion = champion
+        $scope.ngDialogData.champion = champion;
     };
 
     $scope.search = function () {
