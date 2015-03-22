@@ -8,7 +8,7 @@
     Current Champ: <img ng-src="assets/images/champions/{{ngDialogData.id}}.png">
     <br>
     <div ng-show="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in allChampions">
-        <div class="col-xs-3" ng-click="changeChampion(champion)">
+        <div class="col-xs-3" ng-click="changeChampion(champion)" ng-class="{selected: ngDialogData.champion==champion}">
             <img ng-src="assets/images/champions/{{champion.id}}.png">
         </div>
     </div>
