@@ -9,7 +9,9 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
+import com.poo.lolicon.imageprocessors.FileConverter;
 import com.poo.lolicon.imageprocessors.FileRenamer;
+import com.poo.lolicon.imageprocessors.IFileTransformer;
 
 public class Main {
 
@@ -23,7 +25,7 @@ public class Main {
 		String s = currentRelativePath.toAbsolutePath().toString();
 
 		FileFinder fileFinder = new FileFinder(s + "/images");
-		FileRenamer fileRenamer = new FileRenamer(Paths.get("dist").toString());
+		FileConverter fileRenamer = new FileConverter(Paths.get("dist").toString());
 
 		extraction(s + "/json.txt", "data", newObjects -> {
 			System.out.println(newObjects[1] + ": " + newObjects[0]);
@@ -59,7 +61,7 @@ public class Main {
 		}
 	}
 
-	private static void findAndRename(FileFinder fileFinder, FileRenamer fileRenamer, Object[] objects, FormatterFunction function) {
+	private static void findAndRename(FileFinder fileFinder, IFileTransformer fileRenamer, Object[] objects, FormatterFunction function) {
 		String formattedStr = function.format((String) objects[0]);
 		File[] files = fileFinder.search(formattedStr);
 		if (files.length == 0) {
