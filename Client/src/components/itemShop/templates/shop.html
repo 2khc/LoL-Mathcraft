@@ -10,14 +10,14 @@
         <div ng-repeat="tag in branch.tags">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="" ng-model="tagCheck" ng-change="changeFilter(tag, tagCheck)">{{ tag }}</label>
+                    <input type="checkbox" value="" ng-model="tagCheck" ng-change="changeFilter(tag, tagCheck)"><span translate>{{ tag }}</span></label>
             </div>
         </div>
     </div>
 
     <div class="row">
-        <div ng-repeat="item in ngDialogData">
-            <div class="col-xs-3" ng-click="addItem($index)">
+        <div ng-repeat="item in ngDialogData track by $index">
+            <div class="col-xs-3" ng-click="removeItem($index)">
                 <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
             </div>
         </div>

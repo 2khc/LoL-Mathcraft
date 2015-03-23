@@ -26,7 +26,17 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
     }
 
     $scope.addItem = function (index) {
+        if ($scope.ngDialogData.length >= 6) {
+            return false;
+        }
+
+        console.log($scope.allItems[index]);
         $scope.ngDialogData.push($scope.allItems[index]);
+        return true;
+    };
+
+    $scope.removeItem = function (index) {
+        $scope.ngDialogData.splice(index, 1);
     };
 
     $scope.changeFilter = function (tag, checked) {
