@@ -9,11 +9,13 @@ import java.util.List;
 
 import org.json.simple.parser.ParseException;
 
+import com.poo.lolicon.imageprocessors.FileRenamer;
+
 public class Main {
 
 	public static void main(String[] args) throws FileNotFoundException, IOException, ParseException {
 		extractItems();
-		extractChampions();
+		//extractChampions();
 	}
 
 	private static void extractItems() throws FileNotFoundException, IOException, ParseException {
@@ -27,7 +29,7 @@ public class Main {
 			System.out.println(newObjects[1] + ": " + newObjects[0]);
 			findAndRename(fileFinder, fileRenamer, newObjects, (name) -> {
 				String formattedString = ItemFormatter.replaceUnderscoreWithSpace(name);
-				return formattedString.split("\\s+")[0];
+				return ItemFormatter.cutBrackets(formattedString);
 			});
 		}, "name", "id");
 	}
@@ -59,7 +61,6 @@ public class Main {
 
 	private static void findAndRename(FileFinder fileFinder, FileRenamer fileRenamer, Object[] objects, FormatterFunction function) {
 		String formattedStr = function.format((String) objects[0]);
-		// System.out.println(formattedStr);
 		File[] files = fileFinder.search(formattedStr);
 		if (files.length == 0) {
 			System.out.println(formattedStr + " could not be found in JSON.");
