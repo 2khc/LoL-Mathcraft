@@ -18,7 +18,7 @@
                         <span ng-bind-html="country.name | highlight: $select.search"></span>
                     </ui-select-choices>
                 </ui-select>
-                
+
                 Items:
                 <ui-select ng-model="country.selected" theme="selectize" ng-disabled="disabled" style="width: 300px;">
                     <ui-select-match placeholder="Select a item"><img ng-src="assets/images/items/{{$select.selected.id}}.png"> {{$select.selected.name}}</ui-select-match>
@@ -61,12 +61,20 @@
                         <span ng-bind-html="country.name | highlight: $select.search"></span>
                     </ui-select-choices>
                 </ui-select>
-                
+
                 Select item:
                 <div ng-repeat="item in champion.items track by $index">
                     <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
                 </div>
-                <button class="btn btn-primary" ng-click="openItemSelection($index)">Select</button>
+                <button class="btn btn-primary" ng-click="openItemSelection($index)">Select items</button>
+                <button class="btn btn-primary" ng-click="openChampSelection($index)">Select Champ</button>
+
+                <div ng-click="openChampSelection($index)">
+                    <div ng-show="champion.champion == undefined">
+                        <img ng-src="assets/images/champions/blank.png">
+                    </div>
+                    <img ng-src="assets/images/champions/{{champion.champion.id}}.png">{{champion.champion.name}}
+                </div>
 
                 Hp:
                 <br> Attack Damage:

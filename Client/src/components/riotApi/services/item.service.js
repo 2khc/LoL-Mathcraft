@@ -26,14 +26,29 @@ angular.module('mathCraft').service('itemService', function ($q, itemResource, a
 
     this.getAllItemInfo = function () {
         var deferred = $q.defer();
-        if (self.allItemsInfo !== undefined) {
+        if (angular.isDefined(self.allItemsInfo)) {
             deferred.resolve(self.allItemsInfo);
         } else {
             allItemsResource.get({
-                itemListData: 'colloq'
+                itemListData: 'all'
             }, function (data) {
                 deferred.resolve(data.data);
                 self.allItemsInfo = data.data;
+            });
+        }
+        return deferred.promise;
+    };
+
+    this.getTree = function () {
+        var deferred = $q.defer();
+        if (angular.isDefined(self.tree)) {
+            deferred.resolve(self.tree);
+        } else {
+            allItemsResource.get({
+                itemListData: 'tree'
+            }, function (data) {
+                deferred.resolve(data.tree);
+                self.tree = data.tree;
             });
         }
         return deferred.promise;
