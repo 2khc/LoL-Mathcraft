@@ -5,9 +5,8 @@
             <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
     </form>
-    {{ searchTagFilter }}
     <div ng-repeat="branch in itemTree">
-        <h4>{{ branch.header }}</h4>
+        <h4>{{ formatCategoryHeader(branch.header) }}</h4>
         <div ng-repeat="tag in branch.tags">
             <div class="checkbox">
                 <label>

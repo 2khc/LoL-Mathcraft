@@ -12,17 +12,13 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
 
     itemService.getTree().then(function (data) {
         $scope.itemTree = data;
-        console.log(data);
     });
 
     function filter(tags) {
         var searchIndex, intersectedItems, filterResults = [];
         for (searchIndex = 0; searchIndex < $scope.allItems.length; searchIndex += 1) {
-            //intersectedItems = lodash.intersection($scope.allItems[searchIndex].tags, tags);
             intersectedItems = arrayUtilService.caseInsensitiveStringInnerJoin($scope.allItems[searchIndex].tags, tags);
-            console.log(intersectedItems);
             if (intersectedItems.length === tags.length) {
-                console.log($scope.allItems[searchIndex]);
                 filterResults.push($scope.allItems[searchIndex]);
             }
         }
@@ -42,7 +38,7 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
             });
         }
         if ($scope.searchTagFilter.length === 0) {
-            return;   
+            return;
         }
         $scope.filterResults = filter($scope.searchTagFilter);
         //console.log($scope.filterResults);
@@ -56,5 +52,9 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
                 $scope.searchResults.push($scope.allItems[searchIndex]);
             }
         }
+    };
+
+    $scope.formatCategoryHeader = function (header) {
+        return lodash.startCase(header.toLowerCase());
     };
 });
