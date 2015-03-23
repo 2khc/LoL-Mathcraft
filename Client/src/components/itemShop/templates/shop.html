@@ -6,11 +6,12 @@
         </div>
     </form>
     <div ng-repeat="branch in itemTree">
-        <h4>{{ formatCategoryHeader(branch.header) }}</h4>
+        <h4 translate>{{ branch.header }}</h4>
         <div ng-repeat="tag in branch.tags">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="" ng-model="tagCheck" ng-change="changeFilter(tag, tagCheck)"><span translate>{{ tag }}</span></label>
+                    <input type="checkbox" value="" ng-model="tagCheck" ng-change="changeFilter(tag, tagCheck)"><span translate>{{ tag }}</span>
+                </label>
             </div>
         </div>
     </div>
@@ -18,7 +19,14 @@
     <div class="row">
         <div ng-repeat="item in ngDialogData track by $index">
             <div class="col-xs-3" ng-click="removeItem($index)">
-                <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
+                <a href="#" class="thumbnail">
+                    <div class="col-xs-6">
+                        <img ng-src="assets/images/items/{{item.id}}.png" alt="{{item.name}}">
+                    </div>
+                    <div class="col-xs-6">
+                        {{item.name}}
+                    </div>
+                </a>
             </div>
         </div>
     </div>

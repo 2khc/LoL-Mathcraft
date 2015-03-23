@@ -63,8 +63,4 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
             }
         }
     };
-
-    $scope.formatCategoryHeader = function (header) {
-        return lodash.startCase(header.toLowerCase());
-    };
 });
