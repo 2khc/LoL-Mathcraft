@@ -11,7 +11,7 @@
         <div ng-repeat="tag in branch.tags">
             <div class="checkbox">
                 <label>
-                    <input type="checkbox" value="" ng-model="tagCheck" ng-change="changeFilter(tag, tagCheck)">{{ tag }}</label>
+                    <input type="checkbox" value="" ng-model="tagCheck" ng-change="changeFilter(tag, tagCheck)"><span translate>{{ tag }}</span></label>
             </div>
         </div>
     </div>
