@@ -33,7 +33,7 @@
     <div class="row">
         <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length === 0" ng-repeat="item in allItems">
             <div class="col-xs-3" ng-click="addItem($index)">
-                <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
+                <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}"></item>
             </div>
         </div>
     </div>

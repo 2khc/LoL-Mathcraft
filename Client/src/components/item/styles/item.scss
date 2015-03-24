@@ -1,0 +1,32 @@
+@mixin item-transition($time) {
+    -webkit-transition: border $time ease-in-out;
+    -o-transition: border $time ease-in-out;
+    transition: border $time ease-in-out;
+}
+
+item {
+    .item-block {
+        display: block;
+        padding: 4px;
+        line-height: 1.42857143;
+        background-color: #b9baba;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        @include item-transition(.2s);
+        overflow: hidden;
+        height: 74px;
+        width: 200px;
+        .item-thumbnail {
+            position: relative;
+            float: left;
+        }
+        .item-info {
+            position: relative;
+            float: left;
+            p {
+                overflow: hidden;
+                font-size: 10px;
+            }
+        }
+    }
+}
