@@ -36,11 +36,15 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
             data: $scope.champions[championIndex].items
         });
     };
-    
+
     $scope.openChampSelection = function (championIndex) {
         ngDialog.open({
             template: 'components/champSelector/templates/champSelector.html',
             data: $scope.champions[championIndex]
         });
     };
+
+    $scope.$on('ngDialog.opened', function (event, $dialog) {
+        $dialog.find('.ngdialog-content').css('width', '80%').css('height', '100%');
+    });
 });

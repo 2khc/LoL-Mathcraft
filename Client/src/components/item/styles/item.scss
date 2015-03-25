@@ -9,7 +9,7 @@ item {
         display: block;
         padding: 4px;
         line-height: 1.42857143;
-        background-color: #b9baba;
+        background-color: #fff;
         border: 1px solid #ddd;
         border-radius: 4px;
         @include item-transition(.2s);
@@ -23,10 +23,14 @@ item {
         .item-info {
             position: relative;
             float: left;
-            p {
-                overflow: hidden;
-                font-size: 10px;
-            }
+        }
+        p {
+            padding-left: 3px;
+            overflow: hidden;
+            font-size: 12px;
+        }
+        .description {
+            font-size: 10px;   
         }
     }
 }
