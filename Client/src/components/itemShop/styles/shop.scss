@@ -6,4 +6,6 @@
 .item-display {
     float: left;
     position: relative;
+    overflow: scroll;
+    height: 60vh;
 }
