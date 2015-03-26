@@ -1,11 +1,13 @@
 <div class="item-block">
     <div class="item-thumbnail">
-        <img ng-src="{{imageUrl}}">
+        <img ng-src="{{imageUrl}}" err-src="assets/images/items/blank.png">
     </div>
+    <div class="item-info" ng-show="description">
         <p>
             <strong>{{name}}</strong>
         </p>
         <p class="description">
             {{plaintext}}
         </p>
+    </div>
 </div>
