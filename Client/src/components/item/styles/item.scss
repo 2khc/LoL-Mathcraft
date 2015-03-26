@@ -4,8 +4,21 @@
     transition: border $time ease-in-out;
 }
 
+@mixin round-corners($radius) {
+    border-radius: $radius;
+    -moz-border-radius: $radius;
+    -khtml-border-radius: $radius;
+    -webkit-border-radius: $radius;
+}
+
 item {
+    img {
+        border: 2px solid #c17427;
+        @include round-corners(6px);
+    }
     .item-block {
+        position: relative;
+        float: left;
         display: block;
         padding: 4px;
         line-height: 1.42857143;
@@ -14,8 +27,9 @@ item {
         border-radius: 4px;
         @include item-transition(.2s);
         overflow: hidden;
-        height: 74px;
-        width: 200px;
+        min-height: 78px;
+        width: auto;
+        margin: 4px;
         .item-thumbnail {
             position: relative;
             float: left;
@@ -23,14 +37,15 @@ item {
         .item-info {
             position: relative;
             float: left;
-        }
-        p {
-            padding-left: 3px;
-            overflow: hidden;
-            font-size: 12px;
-        }
-        .description {
-            font-size: 10px;   
+            width: 130px;
+            p {
+                padding-left: 3px;
+                overflow: hidden;
+                font-size: 12px;
+            }
+            .description {
+                font-size: 10px;
+            }
         }
     }
 }
