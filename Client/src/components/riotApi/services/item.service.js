@@ -40,13 +40,21 @@ angular.module('mathCraft').service('itemService', function ($q, itemResource, a
     };
 
     this.getTree = function () {
-        var deferred = $q.defer();
+        var i, j, deferred = $q.defer();
         if (angular.isDefined(self.tree)) {
             deferred.resolve(self.tree);
         } else {
             allItemsResource.get({
                 itemListData: 'tree'
             }, function (data) {
+                data.tree.splice(6, 1);
+                for (i = 0; i < data.tree.length; i += 1) {
+                    for (j = 0; j < data.tree[i].tags.length; j += 1) {
+                        if (angular.equals(data.tree[i].tags[j], '_SORTINDEX')) {
+                            data.tree[i].tags.splice(j, 1);
+                        }
+                    }
+                }
                 deferred.resolve(data.tree);
                 self.tree = data.tree;
             });
