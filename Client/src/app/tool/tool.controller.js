@@ -45,6 +45,6 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
     };
 
     $scope.$on('ngDialog.opened', function (event, $dialog) {
-        $dialog.find('.ngdialog-content').css('width', '80%').css('height', '100%');
+        $dialog.find('.ngdialog-content').css('width', '80%').css('height', '100%').css('min-height', '600px');
     });
 });
