@@ -7,16 +7,7 @@
     </form>
     <div class="row">
         <div ng-repeat="item in ngDialogData track by $index">
-            <div class="col-xs-3" ng-click="removeItem($index)">
-                <a href="#" class="thumbnail">
-                    <div class="col-xs-6">
-                        <img ng-src="assets/images/items/{{item.id}}.png" alt="{{item.name}}">
-                    </div>
-                    <div class="col-xs-6">
-                        {{item.name}}
-                    </div>
-                </a>
-            </div>
+            <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)" description="false"></item>
         </div>
     </div>
     <div class="categories">
@@ -35,20 +26,40 @@
     <div class="item-display">
         <div>
             <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length === 0" ng-repeat="item in allItems">
-                <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)" description="false"></item>
+
+                <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+
+                <!--<masonry item-selector=".item-block" ng-repeat="item in allItems">
+                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                </masonry>-->
+                <!--<div masonry>
+                    <div class="masonry-brick" ng-repeat="item in allItems">
+                        <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                    </div>
+                </div>
+                <!--<div class="js-masonry" data-masonry-options='{ "itemSelector": ".item", "columnWidth": 200 }' ng-repeat="item in allItems">
+                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                </div>-->
+                <!--<div ng-init="initialised=true;" ng-if="initialised" deckgrid class="deckgrid" source="allItems">
+                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                </div>-->
             </div>
         </div>
 
-        <div>
+        <!--<div>
             <div ng-hide="(searchQuery === '' || searchQuery === undefined)" ng-repeat="item in searchResults">
-<item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                <masonry item-selector=".item-block">
+                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                </masonry>
             </div>
-        </div>
+        </div>-->
 
-        <div>
+        <!--<div>
             <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length > 0" ng-repeat="item in filterResults">
-<item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                <masonry item-selector=".item-block">
+                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+                </masonry>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>

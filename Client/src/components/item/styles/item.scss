@@ -39,12 +39,12 @@ item {
             float: left;
             width: 130px;
             p {
-                padding-left: 3px;
+                padding: 3px 5px 3px 5px;
                 overflow: hidden;
                 font-size: 12px;
+                margin: 0px;
             }
             .description {
-                font-size: 10px;
             }
         }
     }
