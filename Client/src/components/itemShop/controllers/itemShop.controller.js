@@ -24,6 +24,10 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
         }
         return filterResults;
     }
+    
+    function calculateEmptyItemSlots() {
+        $scope.emptyItemSlots = 6 - $scope.ngDialogData.length;
+    }
 
     $scope.addItem = function (index) {
         if ($scope.ngDialogData.length >= 6) {
@@ -32,6 +36,7 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
 
         console.log($scope.allItems[index]);
         $scope.ngDialogData.push($scope.allItems[index]);
+        $scope.emptyItemSlots = calculateEmptyItemSlots();
         return true;
     };
 
@@ -63,4 +68,6 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
             }
         }
     };
+    
+    calculateEmptyItemSlots();
 });

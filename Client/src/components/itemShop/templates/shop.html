@@ -5,8 +5,12 @@
             <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
     </form>
+    {{ emptyItemSlots }}
     <div class="row">
         <div ng-repeat="item in ngDialogData track by $index">
+            <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="removeItem($index)" description="false"></item>
+        </div>
+        <div ng-repeat="item in emptyItemSlots">
             <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="removeItem($index)" description="false"></item>
         </div>
     </div>
