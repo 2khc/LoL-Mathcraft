@@ -7,10 +7,15 @@ angular.module('mathCraft').directive('item', function () {
         scope: {
             imageUrl: '@',
             name: '@',
-            plaintext: '@'
+            plaintext: '@',
+            description: '=?'
         },
         templateUrl: 'components/item/templates/item.html',
+        controller: function ($scope) {
+            $scope.description = $scope.description || true;
+        },
         link: function (scope, element, attrs, ctrl) {
+
         }
     };
 });
