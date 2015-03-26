@@ -5,6 +5,20 @@
             <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
     </form>
+    <div class="row">
+        <div ng-repeat="item in ngDialogData track by $index">
+            <div class="col-xs-3" ng-click="removeItem($index)">
+                <a href="#" class="thumbnail">
+                    <div class="col-xs-6">
+                        <img ng-src="assets/images/items/{{item.id}}.png" alt="{{item.name}}">
+                    </div>
+                    <div class="col-xs-6">
+                        {{item.name}}
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
     <div class="categories">
         <div ng-repeat="branch in itemTree">
             <h4 translate>{{ branch.header }}</h4>
@@ -20,40 +34,20 @@
 
     <div class="item-display">
         <div>
-            <div ng-repeat="item in ngDialogData track by $index">
-                <div class="col-xs-3" ng-click="removeItem($index)">
-                    <a href="#" class="thumbnail">
-                        <div class="col-xs-6">
-                            <img ng-src="assets/images/items/{{item.id}}.png" alt="{{item.name}}">
-                        </div>
-                        <div class="col-xs-6">
-                            {{item.name}}
-                        </div>
-                    </a>
-                </div>
-            </div>
-        </div>
-        <div>
             <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length === 0" ng-repeat="item in allItems">
-                <div class="col-xs-3" ng-click="addItem($index)">
-                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}"></item>
-                </div>
+                <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)" description="false"></item>
             </div>
         </div>
 
         <div>
             <div ng-hide="(searchQuery === '' || searchQuery === undefined)" ng-repeat="item in searchResults">
-                <div class="col-xs-3" ng-click="addItem($index)">
-                    <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
-                </div>
+<item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
             </div>
         </div>
 
         <div>
             <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length > 0" ng-repeat="item in filterResults">
-                <div class="col-xs-3" ng-click="addItem($index)">
-                    <img ng-src="assets/images/items/{{item.id}}.png"> {{item.name}}
-                </div>
+<item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
             </div>
         </div>
     </div>
