@@ -7,7 +7,7 @@
     </form>
     <div class="row">
         <div ng-repeat="item in ngDialogData track by $index">
-            <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)" description="false"></item>
+            <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="removeItem($index)" description="false"></item>
         </div>
     </div>
     <div class="categories">
