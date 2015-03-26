@@ -1,6 +1,8 @@
 .categories {
     float: left;
     position: relative;
+    font-size: 1em;
+    line-height: 0.7em;
 }
 
 .item-display {
@@ -8,4 +10,5 @@
     position: relative;
     overflow: scroll;
     height: 60vh;
+    width: calc(100% - 170px);
 }
