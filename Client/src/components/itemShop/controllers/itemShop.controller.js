@@ -5,6 +5,7 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
     $scope.searchTagFilter = [];
     $scope.filterResults = [];
     $scope.searchResults = [];
+    $scope.emptyItemSlots = [];
 
     itemService.getAllItemInfo().then(function (data) {
         $scope.allItems = jsonUtilService.convertToArray(data);
@@ -26,7 +27,11 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
     }
     
     function calculateEmptyItemSlots() {
-        $scope.emptyItemSlots = 6 - $scope.ngDialogData.length;
+        var index, emptySlotCount = 6 - $scope.ngDialogData.length;
+        $scope.emptyItemSlots = [];
+        for (index = 0; index < emptySlotCount; index += 1) {
+            $scope.emptyItemSlots.push({});
+        }
     }
 
     $scope.addItem = function (index) {
@@ -36,12 +41,13 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
 
         console.log($scope.allItems[index]);
         $scope.ngDialogData.push($scope.allItems[index]);
-        $scope.emptyItemSlots = calculateEmptyItemSlots();
+        calculateEmptyItemSlots();
         return true;
     };
 
     $scope.removeItem = function (index) {
         $scope.ngDialogData.splice(index, 1);
+        calculateEmptyItemSlots();
     };
 
     $scope.changeFilter = function (tag, checked) {
