@@ -17,6 +17,14 @@
                     </div>
                     <img ng-src="assets/images/champions/{{champion.champion.id}}.png">{{champion.champion.name}}
                 </div>
+                
+                <button class="btn btn-default" ng-click="isChampionCollapsed = !isChampionCollapsed">Toggle collapse</button>
+                <hr>
+                <div collapse="isChampionCollapsed">
+                    <div style="width: 100%">
+                        <champ-selector champion="champion.champion"></champ-selector>
+                    </div>
+                </div>
 
                 <div class="row">
                     <div ng-repeat="item in champion.items track by $index">

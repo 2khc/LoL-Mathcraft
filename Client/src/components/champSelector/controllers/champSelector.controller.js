@@ -2,7 +2,6 @@
 angular.module('mathCraft').controller('champSelectorController', function ($scope, calculateService, jsonUtilService, championService) {
     'use strict';
 
-    console.log($scope.ngDialogData.champion);
     $scope.searchResults = [];
 
     championService.getAllChampionInfo().then(function (data) {
@@ -10,7 +9,7 @@ angular.module('mathCraft').controller('champSelectorController', function ($sco
     });
 
     $scope.changeChampion = function (champion) {
-        $scope.ngDialogData.champion = champion;
+        $scope.champion.champion = champion;
     };
 
     $scope.search = function () {
