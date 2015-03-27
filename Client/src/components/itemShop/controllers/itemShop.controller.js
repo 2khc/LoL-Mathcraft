@@ -45,11 +45,6 @@ angular.module('mathCraft').controller('itemShopController', function ($scope, i
         return true;
     };
 
-    $scope.removeItem = function (index) {
-        $scope.ngDialogData.splice(index, 1);
-        calculateEmptyItemSlots();
-    };
-
     $scope.changeFilter = function (tag, checked) {
         if (checked) {
             $scope.searchTagFilter.push(tag);

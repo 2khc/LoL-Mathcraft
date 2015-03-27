@@ -1,19 +1,11 @@
-<div ng-controller="itemShopController">
+<div class="shop" ng-controller="itemShopController">
     <form role="form">
         <div class="form-group has-feedback">
             <input type="text" class="form-control" placeholder="Search..." ng-model="searchQuery" ng-change="search()" />
             <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
     </form>
-    <div class="row">
-        <div ng-repeat="item in ngDialogData track by $index">
-            <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="removeItem($index)" description="false"></item>
-        </div>
-        <div ng-repeat="item in emptyItemSlots">
-            <item image-url="assets/images/items/blank.png" name="EMPTY_ITEM_SLOT" plaintext="" description="false"></item>
-        </div>
-    </div>
-    <div class="categories">
+    <div class="categories col-lg-2">
         <div ng-repeat="branch in itemTree">
             <h4 translate>{{ branch.header }}</h4>
             <div ng-repeat="tag in branch.tags">
@@ -26,11 +18,18 @@
         </div>
     </div>
 
-    <div class="item-display">
+    <div class="item-display col-lg-10">
         <div>
-            <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length === 0" ng-repeat="item in allItems">
-
-                <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+            <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length === 0">
+                <div deckgrid class="deckgrid" source="allItems">
+                    <item image-url="assets/images/items/{{card.id}}.png" name="{{card.name}}" plaintext="{{card.plaintext}}" ng-click="mother.addItem(card.$index)"></item>
+                </div>
+                <!--<div masonry>
+    <div class="masonry-brick" ng-repeat="item in allItems">
+        <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
+    </div>
+</div>
+                <!--<item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
 
                 <!--<masonry item-selector=".item-block" ng-repeat="item in allItems">
                     <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>

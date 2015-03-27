@@ -47,4 +47,14 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
     $scope.$on('ngDialog.opened', function (event, $dialog) {
         $dialog.find('.ngdialog-content').css('width', '80%').css('height', '100%').css('min-height', '600px');
     });
+    
+    $scope.getEmptySlots = function(items) {
+        var emptySlots = 6 - items.length;
+        return new Array(emptySlots);
+    };
+    
+    $scope.removeItem = function (champion, itemIndex) {
+        champion.items.splice(itemIndex, 1);
+        //calculateEmptyItemSlots();
+    };
 });
