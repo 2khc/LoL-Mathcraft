@@ -1,3 +1,8 @@
 <a href="#" class="thumbnail champion-icon">
-    <img ng-src="assets/images/champions/{{champion.id}}.png" data-holder-rendered="true">
+    <div ng-show="champion == undefined">
+        <img ng-src="assets/images/champions/blank.png">
+    </div>
+    <div ng-hide="champion == undefined">
+        <img ng-src="assets/images/champions/{{champion.id}}.png" data-holder-rendered="true">
+    </div>
 </a>

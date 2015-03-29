@@ -24,44 +24,23 @@
                 <div deckgrid class="deckgrid" source="allItems">
                     <item image-url="assets/images/items/{{card.id}}.png" name="{{card.name}}" plaintext="{{card.plaintext}}" ng-click="mother.addItem(card.$index)"></item>
                 </div>
-                <!--<div masonry>
-    <div class="masonry-brick" ng-repeat="item in allItems">
-        <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-    </div>
-</div>
-                <!--<item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-
-                <!--<masonry item-selector=".item-block" ng-repeat="item in allItems">
-                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-                </masonry>-->
-                <!--<div masonry>
-                    <div class="masonry-brick" ng-repeat="item in allItems">
-                        <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-                    </div>
-                </div>
-                <!--<div class="js-masonry" data-masonry-options='{ "itemSelector": ".item", "columnWidth": 200 }' ng-repeat="item in allItems">
-                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-                </div>-->
-                <!--<div ng-init="initialised=true;" ng-if="initialised" deckgrid class="deckgrid" source="allItems">
-                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-                </div>-->
             </div>
         </div>
 
-        <!--<div>
-            <div ng-hide="(searchQuery === '' || searchQuery === undefined)" ng-repeat="item in searchResults">
-                <masonry item-selector=".item-block">
-                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-                </masonry>
+        <div>
+            <div ng-hide="(searchQuery === '' || searchQuery === undefined)">
+                <div deckgrid class="deckgrid" source="searchResults">
+                    <item image-url="assets/images/items/{{card.id}}.png" name="{{card.name}}" plaintext="{{card.plaintext}}" ng-click="mother.addItem(card.$index)"></item>
+                </div>
             </div>
-        </div>-->
+        </div>
 
-        <!--<div>
-            <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length > 0" ng-repeat="item in filterResults">
-                <masonry item-selector=".item-block">
-                    <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="addItem($index)"></item>
-                </masonry>
+        <div>
+            <div ng-show="(searchQuery === '' || searchQuery === undefined) && searchTagFilter.length > 0">
+                <div deckgrid class="deckgrid" source="filterResults">
+                    <item image-url="assets/images/items/{{card.id}}.png" name="{{card.name}}" plaintext="{{card.plaintext}}" ng-click="mother.addItem(card.$index)"></item>
+                </div>
             </div>
-        </div>-->
+        </div>
     </div>
 </div>

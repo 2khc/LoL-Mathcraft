@@ -28,7 +28,7 @@ item {
         @include item-transition(.2s);
         overflow: hidden;
         min-height: 78px;
-        width: auto;
+        min-width: 206;
         margin: 4px;
         .item-thumbnail {
             position: relative;

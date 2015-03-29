@@ -5,19 +5,19 @@
             <i class="form-control-feedback glyphicon glyphicon-search"></i>
         </div>
     </form>
-    <br>
-    <div ng-show="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in allChampions">
-        <div ng-click="changeChampion(champion)" ng-class="{selected: ngDialogData.champion==champion}">
-            <champion-icon champion="champion"></champion-icon>
+    <div class="champ-container">
+        <br>
+        <div ng-show="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in allChampions">
+            <div ng-click="changeChampion(champion)" ng-class="{selected: ngDialogData.champion==champion}">
+                <champion-icon champion="champion"></champion-icon>
+            </div>
+
         </div>
 
-    </div>
-
-    <div ng-hide="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in searchResults">
-        <div ng-click="changeChampion(champion)">
-            <a href="#" class="thumbnail">
-                <img ng-src="assets/images/champions/{{champion.id}}.png" data-holder-rendered="true">
-            </a>
+        <div ng-hide="searchQuery === '' || searchQuery === undefined" ng-repeat="champion in searchResults">
+            <div ng-click="changeChampion(champion)">
+                <champion-icon champion="champion"></champion-icon>
+            </div>
         </div>
     </div>
 </div>

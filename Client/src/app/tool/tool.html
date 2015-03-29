@@ -11,35 +11,33 @@
                 <h3 class="panel-title">Champion Name</h3>
             </div>
             <div class="panel-body">
-                <div ng-click="openChampSelection($index)">
-                    <div ng-show="champion.champion == undefined">
-                        <img ng-src="assets/images/champions/blank.png">
-                    </div>
-                    <img ng-src="assets/images/champions/{{champion.champion.id}}.png">{{champion.champion.name}}
-                </div>
-                
-                <button class="btn btn-default" ng-click="isChampionCollapsed = !isChampionCollapsed">Toggle collapse</button>
-                <hr>
-                <div collapse="isChampionCollapsed">
-                    <div style="width: 100%">
-                        <champ-selector champion="champion.champion"></champ-selector>
-                    </div>
-                </div>
-
                 <div class="row">
-                    <div ng-repeat="item in champion.items track by $index">
-                        <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="removeItem(champion, $index)" description="false"></item>
-                    </div>
-                    <div ng-repeat="item in getEmptySlots(champion.items) track by $index">
-                        <item image-url="assets/images/items/blank.png" name="EMPTY_ITEM_SLOT" plaintext="" description="false"></item>
+                    <div class="col-lg-12" ng-click="isChampionCollapsed = !isChampionCollapsed">
+                        <champion-icon champion="champion.champion"></champion-icon>{{champion.champion.name}}
                     </div>
                 </div>
-                <button class="btn btn-primary" ng-click="openItemSelection($index)">Select items</button>
-                <button class="btn btn-primary" ng-click="openChampSelection($index)">Select Champ</button>
 
-                <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Toggle collapse</button>
+                <button class="btn btn-default" ng-click="isChampionCollapsed = !isChampionCollapsed">Select Champion</button>
                 <hr>
-                <div collapse="isCollapsed">
+                <div collapse="!isChampionCollapsed">
+                    <div style="width: 100%">
+                        <champ-selector champion="champion"></champ-selector>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div ng-repeat="item in champion.items track by $index">
+                            <item image-url="assets/images/items/{{item.id}}.png" name="{{item.name}}" plaintext="{{item.plaintext}}" ng-click="removeItem(champion, $index)" description="false"></item>
+                        </div>
+                        <div ng-repeat="item in getEmptySlots(champion.items) track by $index">
+                            <item image-url="assets/images/items/blank.png" name="EMPTY_ITEM_SLOT" plaintext="" description="false"></item>
+                        </div>
+                    </div>
+                </div>
+
+                <button class="btn btn-default" ng-click="isCollapsed = !isCollapsed">Select Champion</button>
+                <hr>
+                <div collapse="!isCollapsed">
                     <div style="width: 100%">
                         <shop ng-Dialog-Data="champion.items"></shop>
                     </div>

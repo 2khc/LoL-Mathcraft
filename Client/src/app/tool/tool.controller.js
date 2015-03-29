@@ -1,5 +1,5 @@
 /*global angular */
-angular.module('mathCraft').controller('toolController', function ($scope, championService, itemService, calculateService, jsonUtilService, ngDialog) {
+angular.module('mathCraft').controller('toolController', function ($scope, championService, itemService, calculateService, jsonUtilService) {
     'use strict';
 
     $scope.champions = [];
@@ -30,24 +30,6 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
         $scope.champions.splice(index, 1);
     };
 
-    $scope.openItemSelection = function (championIndex) {
-        ngDialog.open({
-            template: 'components/itemShop/templates/shop.html',
-            data: $scope.champions[championIndex].items
-        });
-    };
-
-    $scope.openChampSelection = function (championIndex) {
-        ngDialog.open({
-            template: 'components/champSelector/templates/champSelector.html',
-            data: $scope.champions[championIndex]
-        });
-    };
-
-    $scope.$on('ngDialog.opened', function (event, $dialog) {
-        $dialog.find('.ngdialog-content').css('width', '80%').css('height', '100%').css('min-height', '600px');
-    });
-    
     $scope.getEmptySlots = function(items) {
         var emptySlots = 6 - items.length;
         return new Array(emptySlots);
@@ -55,6 +37,5 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
     
     $scope.removeItem = function (champion, itemIndex) {
         champion.items.splice(itemIndex, 1);
-        //calculateEmptyItemSlots();
     };
 });
