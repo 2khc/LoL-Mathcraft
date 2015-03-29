@@ -8,12 +8,27 @@
     <div ng-repeat="champion in champions">
         <div class="panel panel-primary">
             <div class="panel-heading">
-                <h3 class="panel-title">Champion Name</h3>
+                <div class="row">
+                    <div class="col-lg-10">
+                        <h3 class="panel-title">Champion Name</h3>
+                    </div>
+                    <div class="col-lg-2">
+                        <button class="btn btn-primary" ng-click="deleteChampion($index)" style="float: right;">Delete</button>
+                    </div>
+                </div>
             </div>
             <div class="panel-body">
                 <div class="row">
-                    <div class="col-lg-12" ng-click="isChampionCollapsed = !isChampionCollapsed">
-                        <champion-icon champion="champion.champion"></champion-icon>{{champion.champion.name}}
+                    <div class="col-lg-10" ng-click="isChampionCollapsed = !isChampionCollapsed">
+                        <champion-icon champion="champion.champion"></champion-icon>
+                        <h1>{{champion.champion.name}}</h1>
+                    </div>
+                    <div class="col-lg-2">
+                        Hp:
+                        <br> Attack Damage:
+                        <br> Ability Power:
+                        <br> Movement Speed:
+                        <br>
                     </div>
                 </div>
 
@@ -42,14 +57,7 @@
                         <shop ng-Dialog-Data="champion.items"></shop>
                     </div>
                 </div>
-
-                Hp:
-                <br> Attack Damage:
-                <br> Ability Power:
-                <br> Movement Speed:
-                <br>
             </div>
-            <button class="btn btn-primary" ng-click="deleteChampion($index)">Delete</button>
         </div>
     </div>
 
