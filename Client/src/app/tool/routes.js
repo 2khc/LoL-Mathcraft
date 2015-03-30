@@ -1,3 +1,4 @@
+/*globals angular */
 angular.module('mathCraft').config(function ($stateProvider, $urlRouterProvider) {
     'use strict';
     $stateProvider.state('tool', {

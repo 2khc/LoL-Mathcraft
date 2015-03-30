@@ -1,5 +1,5 @@
 /*global angular */
-angular.module('mathCraft').controller('toolController', function ($scope, championService, itemService, calculateService, jsonUtilService) {
+angular.module('mathCraft').controller('toolController', function ($scope, $state, championService, itemService, calculateService, jsonUtilService) {
     'use strict';
 
     $scope.champions = [];
@@ -30,12 +30,16 @@ angular.module('mathCraft').controller('toolController', function ($scope, champ
         $scope.champions.splice(index, 1);
     };
 
-    $scope.getEmptySlots = function(items) {
+    $scope.getEmptySlots = function (items) {
         var emptySlots = 6 - items.length;
         return new Array(emptySlots);
     };
-    
+
     $scope.removeItem = function (champion, itemIndex) {
         champion.items.splice(itemIndex, 1);
+    };
+
+    $scope.goToSandbox = function () {
+        $state.go("sandbox");
     };
 });
