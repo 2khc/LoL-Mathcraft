@@ -18,3 +18,18 @@
 html {
   overflow-y: scroll;
 }
+
+.stitched {
+   padding: 20px;
+   margin: 10px;
+   background: #f0f0f0;
+   color: #7b7b7b;
+   font-size: 21px;
+   font-weight: bold;
+   line-height: 1.3em;
+   border: 2px dashed #fff;
+   border-radius: 10px;
+   box-shadow: 0 0 0 4px #f0f0f0;
+   text-shadow: -1px -1px #919191;
+   font-weight: normal;
+}
