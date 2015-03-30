@@ -1,19 +1,16 @@
 <div class="container">
 
     <div ng-include="'components/navbar/navbar.html'"></div>
-    builder
-    <button class="btn btn-lg btn-primary" ng-click="calculate()">Calculate</button>
-    <button class="btn btn-lg btn-primary" ng-click="addBlankChampion()">Add New Champion</button>
 
     <div ng-repeat="champion in champions">
         <div class="panel panel-primary">
             <div class="panel-heading">
                 <div class="row">
                     <div class="col-lg-10">
-                        <h3 class="panel-title">Champion Name</h3>
+                        <h1 class="panel-title">{{champion.champion.name}}</h1>
                     </div>
                     <div class="col-lg-2">
-                        <button class="btn btn-primary" ng-click="deleteChampion($index)" style="float: right;">Delete</button>
+                        <button class="btn btn-primary" ng-click="deleteChampion($index)" style="float: right;"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span> Delete</button>
                     </div>
                 </div>
             </div>
@@ -21,7 +18,7 @@
                 <div class="row">
                     <div class="col-lg-10" ng-click="isChampionCollapsed = !isChampionCollapsed">
                         <champion-icon champion="champion.champion"></champion-icon>
-                        <h1>{{champion.champion.name}}</h1>
+                        
                     </div>
                     <div class="col-lg-2">
                         Hp:
@@ -60,13 +57,14 @@
             </div>
         </div>
     </div>
-
-    <ui-select ng-model="country.selected" theme="selectize" ng-disabled="disabled" style="width: 300px;">
-        <ui-select-match placeholder="Select created champion">{{$select.selected.name}}</ui-select-match>
-        <ui-select-choices repeat="country in champions | filter: $select.search">
-            <span ng-bind-html="country.name | highlight: $select.search"></span>
-        </ui-select-choices>
-    </ui-select>
+    <div class="row">
+        <div class="col-lg-10">
+            <button class="btn btn-lg btn-default stitched btn-block" ng-click="addBlankChampion()"><span class="glyphicon glyphicon-plus" aria-hidden="true"></span> Add New Champion</button>
+        </div>
+        <div class="col-lg-2">
+            <button class="btn btn-lg btn-primary btn-block" ng-click="calculate()">Calculate</button>
+        </div>
+    </div>
     <hr>
 
     <div ng-include="'components/footer/footer.html'"></div>
